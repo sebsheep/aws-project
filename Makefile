@@ -1,7 +1,12 @@
 # Scripts d'installation, à lancer uniquement à la création de l'espace de travail
 install-silex:
-	composer config -g github-oauth.github.com fa7525e8f9e94549c13607b6cd110b9e3a3f1460
-	composer install
+	sudo apt-get install php5-cli
+	curl -sS https://getcomposer.org/installer | php
+	sudo mv composer.phar /usr/local/bin/composer.phar
+	echo "export composer='/usr/local/bin/composer.phar'" >> ~/.bashrc
+	export composer='/usr/local/bin/composer.phar'
+	/usr/local/bin/composer.phar config -g github-oauth.github.com fa7525e8f9e94549c13607b6cd110b9e3a3f1460
+	/usr/local/bin/composer.phar install
 
 install-node:
 	npm install
